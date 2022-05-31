@@ -1,0 +1,17 @@
+FROM node
+
+WORKDIR /authServer/src
+
+COPY package*.json ./
+COPY .env .
+COPY authServer.js .
+COPY database ./database/
+COPY routes/auth.js routes/auth.js
+COPY controller/authUser.js controller/authUser.js
+COPY models/user.js models/user.js
+
+RUN npm install
+
+CMD node authServer.js
+
+EXPOSE 3001

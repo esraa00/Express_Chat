@@ -1,30 +1,32 @@
 import "./Message.css";
+import React from "react";
+const Message = (props) => {
+  console.log(props);
 
-const Message = ({ own }) => {
   return (
-    <div className={own ? "messageIsOwned message" : "message"}>
+    <div className={props.own ? "messageIsOwned message" : "message"}>
       <div className="messageTop">
-        {!own && (
+        {!props.own && (
           <img
             src="https://via.placeholder.com/40"
             alt="userImage"
             className="messageImage"
           ></img>
         )}
-        <p className={own ? "messageIsOwnedText messageText" : "messageText"}>
-          loremfkdjkfjskdfjslka kdfj kjalkf j jdklaj kkdsl jkdsjaklfj kldsj
-          ;fkjak jd;fjakdsjfk jsds;f lkfaj d;sf jksldj
-          fjdakjfldajlkfjlkdj;fajsdkjfajkldjfkljadskljf;jdakjflksdj;fjk;;ajlk;fjkasdfihsdhfiohsadkndsnfkjsdlkfnsdndgnsihgiohoieg
-          nkfd kjka ljldk fkjkdj fklaj
-          lkfjklsdjalkj;kfggggggggggggggggggggggggggggggggggggggggggggggggggggggggggksfkjgkjflkdjsgklfj;gksj
-          gjfdlgk; sklf jgk jslkgjkfld gkljsf; gjkfdjgks
-          jkgjlksjfdgk;ljsfkdgjsk;lfdgjksdsfjgkjsfdkgj;fjgksjdfgkljsfdkgjklsfdjg;jfd
-          kgj
-          kdfjgkjgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+        <p
+          className={
+            props.own ? "messageIsOwnedText messageText" : "messageText"
+          }
+        >
+          {props.message.text}
         </p>
       </div>
       <div className="messageBottom">
-        <p>5:30pm</p>
+        <p>
+          {props.message.createdAt === props.message.updatedAt
+            ? props.message.createdAt
+            : props.message.updatedAt}
+        </p>
       </div>
     </div>
   );

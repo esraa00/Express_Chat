@@ -1,0 +1,12 @@
+FROM node
+
+WORKDIR /socketServer/src/
+
+COPY package*.json ./
+COPY socketServer.js .
+
+RUN npm install 
+
+CMD node socketServer.js
+
+EXPOSE 5000

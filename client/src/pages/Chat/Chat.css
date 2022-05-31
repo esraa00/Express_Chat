@@ -1,61 +1,75 @@
-
-.chatPage{
-    height:100vh;
-    width:100vw;
-    display:flex;
+.chatPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
 }
 
-.chatMenu{
-    flex:3.5;
+.chatMenu {
+  flex: 3.5;
 }
 
-.chatMenuInput{
-    padding:10px;
-    border-radius: 7px;
-    border:1px #DFDADE solid;
-    width: 90%;
+.chatMenuInput {
+  padding: 10px;
+  border: 1px #dfdade solid;
+  width: 70%;
 }
 
-.chatBox{
-    flex:5.5;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.chatMenuSearchBar {
+  position: relative;
 }
 
-.chatBoxTop{
-overflow-y: scroll;
+.chatMenuSearchButton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  border: none;
+  font-size: large;
+  background-color: #ca6c68;
+  color: aliceblue;
+  cursor: pointer;
 }
 
-.chatBoxBottom{
-    display: flex;
-    margin-top: 5px;
-    align-items: center;
-    justify-content: space-between;
+.chatBox {
+  flex: 5.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.chatMessageInput{
-    width:80%;
-    height: 90px;
-    padding:10px;
+.chatBoxTop {
+  overflow-y: scroll;
 }
 
-.chatSubmitButton{
-    width:70px;
-    height: 40px;
-    border:none;
-    border-radius: 5px;
-    cursor:pointer;
-    background-color: #CA6C68;
-    color:white;
+.chatBoxBottom {
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.chatOnline{
-    flex:3;
+.chatMessageInput {
+  width: 80%;
+  height: 90px;
+  padding: 10px;
 }
 
-.chatMenu,.chatBox,.chatOnline{
-    padding:10px;
-
+.chatSubmitButton {
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ca6c68;
+  color: white;
 }
 
+.chatOnline {
+  flex: 3;
+}
+
+.chatMenu,
+.chatBox,
+.chatOnline {
+  padding: 10px;
+}

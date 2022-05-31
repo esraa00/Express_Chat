@@ -1,2 +1,16 @@
 node_modules
 .env
+
+
+  express-chat-front:
+    build: ./client/Dockerfile.client
+    networks:
+      - express-chat
+  express-chat-api-server:
+    build: ./server/Dockerfile.apiServer
+  express-chat-auth-server:
+    build: ./server/Dockerfile.authServer
+  express-chat-socket-server:
+    build: ./server/Dockerfile.socketServer
+
+networks:

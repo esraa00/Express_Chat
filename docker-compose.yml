@@ -1,0 +1,96 @@
+version: "3.8"
+
+services:
+  reverse-proxy:
+    image: nginx:latest
+    container_name: reverse-proxy
+    depends_on:
+      - frontend-service
+      - mongo
+      - redis
+      - authentication-service
+      - general-services-service
+      - socket-service
+    volumes:
+      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+
+  frontend-service:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.client
+    container_name: frontend-service
+    restart: always
+    networks:
+      express-chat-net:
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    networks:
+      - express-chat-net
+    volumes:
+      - express-chat-db:/express-chat/data/db
+    ports:
+      - "27017:27017"
+
+  authentication-service:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.authServer
+    container_name: authentication-service
+    depends_on:
+      - mongo
+    restart: always
+    networks:
+      - express-chat-net
+    ports:
+      - "3001:3001"
+
+  general-services-service:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.apiServer
+    container_name: general-services-service
+    depends_on:
+      - mongo
+    restart: always
+    networks:
+      - express-chat-net
+    ports:
+      - "4000:4000"
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    volumes:
+      - express-chat-cache:/express-chat/data/cache
+    networks:
+      express-chat-net:
+    ports:
+      - "6379:6379"
+
+  socket-service:
+    build:
+      context: ./server/
+      dockerfile: Dockerfile.socketServer
+    container_name: socket-service
+    depends_on:
+      - redis
+    restart: always
+    networks:
+      express-chat-net:
+    ports:
+      - "5000:5000"
+
+volumes:
+  express-chat-cache:
+  express-chat-db:
+
+networks:
+  express-chat-net:

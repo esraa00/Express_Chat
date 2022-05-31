@@ -1,0 +1,11 @@
+const host = "http://localhost";
+export const registerRoute = `${host}:3001/api/auth/register`;
+export const loginRoute = `${host}:3001/api/auth/login`;
+export const getConversationRoute = `${host}:4000/api/services/conversation`;
+export const fetchUserRoute = `${host}:4000/api/services/user`; //by id
+export const getMessagesRoute = `${host}:4000/api/services/message`;
+export const postNewMessageRoute = `${host}:4000/api/services/message/add`;
+export const findSearchedUser = `${host}:4000/api/services/user/byname`; // by username
+export const isLoggedInRoute = `${host}:3001/api/auth/isLoggedIn`;
+export const logoutUserRoute = `${host}:4000/api/services/user/logout`;
+export const createNewConversation = `${host}:4000/api/services/conversation`;

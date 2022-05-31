@@ -1,0 +1,19 @@
+FROM node
+
+WORKDIR /apiServer/src/
+
+COPY package*.json ./
+COPY apiServer.js .
+COPY .env .
+COPY database ./database/
+COPY controller ./controller
+COPY models ./models
+COPY routes/user.js routes/user.js
+COPY routes/conversation.js routes/conversation.js
+COPY routes/message.js routes/message.js
+
+RUN npm install
+
+CMD node apiServer.js
+
+EXPOSE 4000

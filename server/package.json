@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "startAuth": "nodemon authServer.js"
+    "startAuth": "nodemon authServer.js",
+    "startSocket": "nodemon socketserver.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +18,10 @@
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.0",
-    "nodemon": "^2.0.16",
+    "redis": "^4.1.0",
     "socket.io": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
